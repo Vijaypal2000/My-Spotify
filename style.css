@@ -18,6 +18,8 @@ padding: 0;
 
 nav{
     font-family: 'Ubuntu', sans-serif;
+    position: sticky;
+    top: 0;
 }
 nav ul{
     display: flex;
@@ -44,17 +46,20 @@ nav ul{
     align-items: center;
     font-weight: bolder;
     font-size: 1.3rem;
+    bottom: 0;
     
 }
 .container{
-    min-height: 70vh;
+    height: 70vh;
     background-color:var(--colour2);
     color:var(--colour4);
     font-family: 'Varela Round', sans-serif;
     display: flex;
     margin: 1.3rem auto;
-    width: 70%;
+    width: 60%;
     padding: 1rem;
+    background: url(music.jpg);
+    background-size:cover;
 }
 .bottom{
     position: sticky;
@@ -67,6 +72,7 @@ nav ul{
     justify-content: center;
 flex-direction: column;
 
+
 }
 .icons{
     margin: 1.4rem;
@@ -77,4 +83,53 @@ flex-direction: column;
 }
 #myProgressBar{
     width: 80vw;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.songItem{
+height: 3rem;
+display: flex;
+align-items: center;
+margin: 1rem;
+background-color: rgb(13 13 84);
+color: var(--colour4);
+border-radius: 1rem;
+padding: 0.5rem;
+font-size: 1.5rem;
+justify-content: space-between;
+cursor: pointer;
+}
+.songItem img{
+    width: 3rem;
+    border-radius: 1rem;
+    
+
+}
+
+.songItem span{
+    margin: 0.5rem;
+}
+span:nth-child(2){
+    width: 80%;
+}
+.songItemContainer{
+    padding-top: 1rem;
+}
+.gifInfo img{
+    width: 5rem;
+    margin-right: 2rem;
+    opacity: 0;
+    transition: 0.5s ease-in;
+}
+.gifInfo{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10vw;
+    top: 7vh;
+    font-size: 1.6rem;
+}
+.gitInfo span{
+
 }
