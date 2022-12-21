@@ -1,5 +1,5 @@
-let audioElement= new Audio('./songs/1.mp3');
-// audioElement.play();
+
+
 let songList=[
     {songName: "Let Me Love You",filePath:"./songs/1.mp3",coverPath:"./covers/1.jpg"},
     {songName: "Tenu M Love Krta",filePath:"./songs/2.mp3",coverPath:"./covers/2.jpg"},
@@ -15,6 +15,30 @@ let songList=[
 let masterPlay=document.getElementById("masterPlay");
 let gif=document.getElementById("gif");
 let progressBar=document.getElementById("myProgressBar");
+songItems=Array.from(document.getElementsByClassName("songItem"))
+let audioElement= new Audio("./songs/1.mp3");
+// console.log(songItems);
+songItems.forEach((element,i) => {
+    element.getElementsByTagName("img")[0].src= songList[i].coverPath;
+    element.getElementsByTagName("span")[0].innerText=songList[i].songName;
+   
+});
+
+songItems.forEach((element) => {
+    element.addEventListener("click",(e)=>{
+        filepa = songList[parseInt(e.target.id)].filePath;
+        audioElement.src = filepa;
+        console.log(e.target.id)
+        audioElement.currentTime=0;
+        audioElement.play();
+        masterPlay.classList.add("fa-pause");
+        masterPlay.classList.remove("fa-play");
+        gif.style.opacity=1;
+        
+        
+    });
+    
+});
 masterPlay.addEventListener("click",()=>{
     if(audioElement.paused || audioElement.currentTime<=0){
         audioElement.play();

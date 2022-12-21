@@ -28,6 +28,7 @@ nav ul{
     height: 6.5rem;
     background-color:var(--colour2);
     color:var(--colour4);
+    cursor: pointer;
 
 }
     nav ul li{
