@@ -1,44 +1,123 @@
 
 
-let songList=[
-    {songName: "Let Me Love You",filePath:"./songs/1.mp3",coverPath:"./covers/1.jpg"},
-    {songName: "Tenu M Love Krta",filePath:"./songs/2.mp3",coverPath:"./covers/2.jpg"},
-    {songName: "All Is Well",filePath:"./songs/3.mp3",coverPath:"./covers/3.jpg"},
-    {songName: "Back It Up",filePath:"./songs/4.mp3",coverPath:"./covers/4.jpg"},
-    {songName: "Get Up Jawani",filePath:"./songs/5.mp3",coverPath:"./covers/5.jpg"},
-    {songName: "Chand Shifariz",filePath:"./songs/6.mp3",coverPath:"./covers/6.jpg"},
-    {songName: "Mai Hoo Naa",filePath:"./songs/7.mp3",coverPath:"./covers/7.jpg"},
-    {songName: "Munni Badnaam",filePath:"./songs/8.mp3",coverPath:"./covers/8.jpg"},
-    {songName: "Shila Ki Jawani",filePath:"./songs/9.mp3",coverPath:"./covers/9.jpg"},
-    {songName: "High Heals",filePath:"./songs/10.mp3",coverPath:"./covers/10.jpg"}
-]
+let songlist = [
+	{
+		songName: "Aise Kyun ",
+		filePath: "songs/Aise Kyun .mp3",
+		coverPath: "./covers/1.jpg",
+	},
+	{
+		songName: "Gul",
+		filePath: "songs/Anuv Jain.mp3",
+		coverPath: "./covers/2.jpg",
+	},
+	{
+		songName: "Flute",
+		filePath: "songs/flute.mp3",
+		coverPath: "./covers/3.jpg",
+	},
+	{
+		songName: "Haaye Oye",
+		filePath: "songs/Haaye Oye.mp3",
+		coverPath: "./covers/4.jpg",
+	},
+	{
+		songName: "Iraaday Song Abdul Hannan",
+		filePath: "songs/Iraaday Song Abdul Hannan.mp3",
+		coverPath: "./covers/5.jpg",
+	},
+	{
+		songName: "Kuch na kari",
+		filePath: "songs/kuch na kari.mp3",
+		coverPath: "./covers/6.jpg",
+	},
+	{
+		songName: "Raataan Lambiyan",
+		filePath: "songs/Raataan Lambiyan.mp3",
+		coverPath: "./covers/7.jpg",
+	},
+	{
+		songName: "Ranjha",
+		filePath: "songs/Ranjha.mp3",
+		coverPath: "./covers/8.jpg",
+	},
+	{
+		songName: "Yeh Saari Baat",
+		filePath: "songs/Yeh Saari Baat.mp3",
+		coverPath: "./covers/9.jpg",
+	},
+	{
+		songName: "Flute music",
+		filePath: "songs/flute music.mp3",
+		coverPath: "./covers/10.jpg",
+	},
+];
 let masterPlay=document.getElementById("masterPlay");
 let gif=document.getElementById("gif");
 let progressBar=document.getElementById("myProgressBar");
 songItems=Array.from(document.getElementsByClassName("songItem"))
 let audioElement= new Audio("./songs/1.mp3");
+let forwardbtn= document.getElementById("forwardd")
+let backwardbtn= document.getElementById("backwardd")
+let bottom_songname = document.getElementsByClassName("itemInfo")[0].getElementsByTagName("span")[0];
+let filepath=0;
+let filename="";
 // console.log(songItems);
 songItems.forEach((element,i) => {
-    element.getElementsByTagName("img")[0].src= songList[i].coverPath;
-    element.getElementsByTagName("span")[0].innerText=songList[i].songName;
+    element.getElementsByTagName("img")[0].src= songlist[i].coverPath;
+    element.getElementsByTagName("span")[0].innerText=songlist[i].songName;
    
 });
 
-songItems.forEach((element) => {
-    element.addEventListener("click",(e)=>{
-        filepa = songList[parseInt(e.target.id)].filePath;
-        audioElement.src = filepa;
-        console.log(e.target.id)
-        audioElement.currentTime=0;
-        audioElement.play();
-        masterPlay.classList.add("fa-pause");
-        masterPlay.classList.remove("fa-play");
-        gif.style.opacity=1;
-        
+forwardbtn.addEventListener("click",()=>{
+		if(filepath>9){
+			filepath=0;
+		}
+		else{
+			filepath+=1;
+		}
+		filename = songlist[filepath].songName;
+		bottom_songname.innerText = filename;
+		songPlay.src = songlist[filepath].filePath;
+		songPlay.currentTime = 0;
+		songPlay.play();
+		masterplay.classList.add("fa-pause");
+		masterplay.classList.remove("fa-play");
+		gif.style.opacity = 1;
+})
+backwardbtn.addEventListener("click",()=>{
+		if(filepath<0){
+			filepath=9;
+		}
+		else{
+			filepath-=1;
+		}
+		filename = songlist[filepath].songName;
+		bottom_songname.innerText = filename;
+		songPlay.src = songlist[filepath].filePath;
+		songPlay.currentTime = 0;
+		songPlay.play();
+		masterplay.classList.add("fa-pause");
+		masterplay.classList.remove("fa-play");
+		gif.style.opacity = 1;
+})
+
+songItems.forEach((element,i) => {
+	element.addEventListener("click", (e) => {
+
+        filepath =parseInt(e.target.id) ;
+        songPlay.src = songlist[filepath].filePath;
+		filename = songlist[parseInt(e.target.id)].songName;
+		bottom_songname.innerText= filename;
+        songPlay.currentTime=0;
+        songPlay.play();
+        masterplay.classList.add("fa-pause");
+        masterplay.classList.remove("fa-play");
+        gif.style.opacity = 1;
         
     });
-    
 });
+
 masterPlay.addEventListener("click",()=>{
     if(audioElement.paused || audioElement.currentTime<=0){
         audioElement.play();
