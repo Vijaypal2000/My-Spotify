@@ -56,7 +56,7 @@ let masterPlay=document.getElementById("masterPlay");
 let gif=document.getElementById("gif");
 let progressBar=document.getElementById("myProgressBar");
 let songItems=Array.from(document.getElementsByClassName("songItem"))
-let audioElement= new Audio("./songs/1.mp3");
+let audioElement = new Audio("songs/Aise Kyun .mp3");
 let forwardbtn= document.getElementById("forwardd")
 let backwardbtn= document.getElementById("backwardd")
 let bottom_songname = document.getElementsByClassName("gifInfo")[0].getElementsByTagName("span")[0];
@@ -119,6 +119,8 @@ songItems.forEach((element,i) => {
 });
 
 masterPlay.addEventListener("click",()=>{
+	filename = songlist[filepath].songName;
+	bottom_songname.innerText = filename;
     if(audioElement.paused || audioElement.currentTime<=0){
         audioElement.play();
         masterPlay.classList.add("fa-pause");
