@@ -55,11 +55,11 @@ let songlist = [
 let masterPlay=document.getElementById("masterPlay");
 let gif=document.getElementById("gif");
 let progressBar=document.getElementById("myProgressBar");
-songItems=Array.from(document.getElementsByClassName("songItem"))
+let songItems=Array.from(document.getElementsByClassName("songItem"))
 let audioElement= new Audio("./songs/1.mp3");
 let forwardbtn= document.getElementById("forwardd")
 let backwardbtn= document.getElementById("backwardd")
-let bottom_songname = document.getElementsByClassName("itemInfo")[0].getElementsByTagName("span")[0];
+let bottom_songname = document.getElementsByClassName("gifInfo")[0].getElementsByTagName("span")[0];
 let filepath=0;
 let filename="";
 // console.log(songItems);
@@ -78,11 +78,11 @@ forwardbtn.addEventListener("click",()=>{
 		}
 		filename = songlist[filepath].songName;
 		bottom_songname.innerText = filename;
-		songPlay.src = songlist[filepath].filePath;
-		songPlay.currentTime = 0;
-		songPlay.play();
-		masterplay.classList.add("fa-pause");
-		masterplay.classList.remove("fa-play");
+		audioElement.src = songlist[filepath].filePath;
+		audioElement.currentTime = 0;
+		audioElement.play();
+		masterPlay.classList.add("fa-pause");
+		masterPlay.classList.remove("fa-play");
 		gif.style.opacity = 1;
 })
 backwardbtn.addEventListener("click",()=>{
@@ -94,11 +94,11 @@ backwardbtn.addEventListener("click",()=>{
 		}
 		filename = songlist[filepath].songName;
 		bottom_songname.innerText = filename;
-		songPlay.src = songlist[filepath].filePath;
-		songPlay.currentTime = 0;
-		songPlay.play();
-		masterplay.classList.add("fa-pause");
-		masterplay.classList.remove("fa-play");
+		audioElement.src = songlist[filepath].filePath;
+		audioElement.currentTime = 0;
+		audioElement.play();
+		masterPlay.classList.add("fa-pause");
+		masterPlay.classList.remove("fa-play");
 		gif.style.opacity = 1;
 })
 
@@ -106,13 +106,13 @@ songItems.forEach((element,i) => {
 	element.addEventListener("click", (e) => {
 
         filepath =parseInt(e.target.id) ;
-        songPlay.src = songlist[filepath].filePath;
+        audioElement.src = songlist[filepath].filePath;
 		filename = songlist[parseInt(e.target.id)].songName;
 		bottom_songname.innerText= filename;
-        songPlay.currentTime=0;
-        songPlay.play();
-        masterplay.classList.add("fa-pause");
-        masterplay.classList.remove("fa-play");
+        audioElement.currentTime=0;
+        audioElement.play();
+        masterPlay.classList.add("fa-pause");
+        masterPlay.classList.remove("fa-play");
         gif.style.opacity = 1;
         
     });
