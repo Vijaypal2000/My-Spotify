@@ -77,7 +77,11 @@ forwardbtn.addEventListener("click",()=>{
 			filepath+=1;
 		}
 		filename = songlist[filepath].songName;
-		bottom_songname.innerText = filename;
+		if (screen.width <= 500) {
+			bottom_songname.innerText = "";
+		} else {
+			bottom_songname.innerText = filename;
+		}
 		audioElement.src = songlist[filepath].filePath;
 		audioElement.currentTime = 0;
 		audioElement.play();
@@ -93,7 +97,11 @@ backwardbtn.addEventListener("click",()=>{
 			filepath-=1;
 		}
 		filename = songlist[filepath].songName;
-		bottom_songname.innerText = filename;
+		if (screen.width <= 500) {
+			bottom_songname.innerText = "";
+		} else {
+			bottom_songname.innerText = filename;
+		}
 		audioElement.src = songlist[filepath].filePath;
 		audioElement.currentTime = 0;
 		audioElement.play();
@@ -107,8 +115,12 @@ songItems.forEach((element,i) => {
 
         filepath =parseInt(e.target.id) ;
         audioElement.src = songlist[filepath].filePath;
-		filename = songlist[parseInt(e.target.id)].songName;
-		bottom_songname.innerText= filename;
+		filename = songlist[filepath].songName;
+		if (screen.width <= 500) {
+			bottom_songname.innerText = "";
+		} else {
+			bottom_songname.innerText = filename;
+		}
         audioElement.currentTime=0;
         audioElement.play();
         masterPlay.classList.add("fa-pause");
@@ -120,7 +132,11 @@ songItems.forEach((element,i) => {
 
 masterPlay.addEventListener("click",()=>{
 	filename = songlist[filepath].songName;
-	bottom_songname.innerText = filename;
+	if (screen.width <= 500) {
+		bottom_songname.innerText = "";
+	} else {
+		bottom_songname.innerText = filename;
+	}
     if(audioElement.paused || audioElement.currentTime<=0){
         audioElement.play();
         masterPlay.classList.add("fa-pause");
