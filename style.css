@@ -132,5 +132,20 @@ span:nth-child(2){
     font-size: 1.6rem;
 }
 .gitInfo span{
+font-family: "Varela Round", sans-serif;
+}
 
+@media only screen and (max-width:500px) {
+	:root{
+		font-size: 12px;
+		
+	}
+
+	img[alt="gif"]{
+	width: 4rem;
+	margin-right:0rem ;
+    }
+    .container{
+        height: 58rem;
+    }
 }
