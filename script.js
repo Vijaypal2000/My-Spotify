@@ -56,12 +56,14 @@ let masterPlay=document.getElementById("masterPlay");
 let gif=document.getElementById("gif");
 let progressBar=document.getElementById("myProgressBar");
 let songItems=Array.from(document.getElementsByClassName("songItem"))
+console.log(songItems)
 let audioElement = new Audio("songs/Aise Kyun .mp3");
 let forwardbtn= document.getElementById("forwardd")
 let backwardbtn= document.getElementById("backwardd")
 let bottom_songname = document.getElementsByClassName("gifInfo")[0].getElementsByTagName("span")[0];
 let filepath=0;
 let filename="";
+
 // console.log(songItems);
 songItems.forEach((element,i) => {
     element.getElementsByTagName("img")[0].src= songlist[i].coverPath;
